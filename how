@@ -1,0 +1,40 @@
+# 가상환경 만들기 << good to keep a project dependency organized
+python -m venv venv
+# activate
+venv\Scripts\activate
+clear
+
+pip install Flask
+(python -m pip install --upgrade pip)
+
+pip install Flask-SQLAlchemy
+pip install Flask-Migrate
+pip install psycopg2-binary
+
+(python --version == 3.9.12)
+
+pip freeze > requirements.txt
+
+# git
+git init
+git remote add origin <url>
+git branch
+git add .
+git commit -m "Adding Files"
+# Check current branch before pushing the codes 
+git branch  (>> * master)
+git push -u origin master
+
+# db
+flask db init
+flask db migrate -m "Create Subscription table"
+flask db upgrade
+
+pip freeze > requirements.txt
+
+git add.
+git commit -m "Adding Files"
+git push -u origin master
+
+# local test
+flask run
