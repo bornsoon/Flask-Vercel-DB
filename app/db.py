@@ -15,8 +15,11 @@ try:
 except psycopg.OperationalError as e:
     print(f"Connection failed: {e}")
 
+'''
+# Connect to an existing database
+with psycopg.connect(DATABASE_URI) as conn:
 
-'''    # Open a cursor to perform database operations
+    # Open a cursor to perform database operations
     with conn.cursor() as cur:
 
         # Execute a command: this creates a new table
@@ -46,6 +49,7 @@ except psycopg.OperationalError as e:
         # Make the changes to the database persistent
         conn.commit()
 '''
+
         
 # DSN = os.getenv('DSN')
 
