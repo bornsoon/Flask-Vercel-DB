@@ -3,8 +3,7 @@ import logging
 
 app = Flask(__name__)
 
-from app import routes, models
-
+from app import routes
 # Setup console logging
 if not app.debug:
     stream_handler = logging.StreamHandler()
