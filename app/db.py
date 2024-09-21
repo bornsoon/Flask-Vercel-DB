@@ -5,19 +5,25 @@ import psycopg  #pip install "psycopg[binary]"  (install psycopg3)
 import os
 # https://www.psycopg.org/docs/connection.html
 
-DATABASE_URI = os.getenv('DATABASE_URL')
+DATABASE_URI = os.getenv('DSN')
 
 try:
+    print(DATABASE_URI)
+    if DATABASE_URI is None:
+        raise ValueError("DATABASE_URI is not set.")
+    
     # Connect to an existing database
-    with psycopg.connect(DATABASE_URI) as conn:
+    # with psycopg.connect(DATABASE_URI) as conn:
+    with psycopg.connect(host="ep-shiny-lake-a4u2wx0x-pooler.us-east-1.aws.neon.tech", dbname="verceldb", user="default", password="4T2xWfmzOYgZ", port=5432, sslmode="prefer") as conn:
         print("Connected to the database!")
         # 데이터베이스 작업
 except psycopg.OperationalError as e:
     print(f"Connection failed: {e}")
 
-'''
+
 # Connect to an existing database
-with psycopg.connect(DATABASE_URI) as conn:
+with psycopg.connect(host="ep-shiny-lake-a4u2wx0x-pooler.us-east-1.aws.neon.tech", dbname="verceldb", user="default", password="4T2xWfmzOYgZ", port=5432, sslmode="prefer") as conn:
+
 
     # Open a cursor to perform database operations
     with conn.cursor() as cur:
@@ -48,7 +54,7 @@ with psycopg.connect(DATABASE_URI) as conn:
 
         # Make the changes to the database persistent
         conn.commit()
-'''
+
 
         
 # DSN = os.getenv('DSN')
